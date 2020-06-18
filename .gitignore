@@ -1,0 +1,6 @@
+*.png
+*.gif
+*.pdf
+exp/
+.idea/
+__pycache__

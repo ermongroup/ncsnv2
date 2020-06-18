@@ -1,0 +1,63 @@
+training:
+  batch_size: 128
+  n_epochs: 500000
+  n_iters: 300001
+  snapshot_freq: 5000
+  snapshot_sampling: true
+  anneal_power: 2.0
+  log_all_sigmas: false
+
+sampling:
+  batch_size: 100
+  data_init: false
+  step_lr: 0.00002
+  n_steps_each: 100
+  ckpt_id: 175000
+  final_only: true
+  fid: false
+  num_samples4fid: 10000
+  inpainting: false
+  interpolation: false
+
+data:
+  ## celeba
+#  dataset: "CELEBA"
+#  image_size: 64
+#  channels: 3
+#  logit_transform: false
+#  random_flip: true
+#  uniform_dequantization: true
+#  gaussian_dequantization: false
+#  random_flip: true
+#  rescaled: false
+#  num_workers: 32
+  #         cifar10
+  dataset: "CIFAR10"
+  image_size: 32
+  channels: 3
+  logit_transform: false
+  uniform_dequantization: true
+  gaussian_dequantization: false
+  random_flip: true
+  rescaled: false
+  num_workers: 4
+
+model:
+  sigma_begin: 1
+  sigma_end: 0.01
+  sigma_dist: geometric
+  num_classes: 10
+  normalization: InstanceNorm++
+  nonlinearity: elu
+  spec_norm: false
+  ema: false
+  ema_rate: 0.999
+  ngf: 128
+
+optim:
+  weight_decay: 0.000
+  optimizer: "Adam"
+  lr: 0.001
+  beta1: 0.9
+  amsgrad: false
+  eps: 0.00000001
