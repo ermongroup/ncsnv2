@@ -193,7 +193,8 @@ class NCSNRunner():
                         all_samples = anneal_Langevin_dynamics(init_samples, test_score, sigmas.cpu().numpy(),
                                                                self.config.sampling.n_steps_each,
                                                                self.config.sampling.step_lr,
-                                                               final_only=True, verbose=True)
+                                                               final_only=True, verbose=True,
+                                                               denoise=self.config.sampling.denoise)
 
                         sample = all_samples[-1].view(all_samples[-1].shape[0], self.config.data.channels,
                                                       self.config.data.image_size,
@@ -345,7 +346,8 @@ class NCSNRunner():
                 all_samples = anneal_Langevin_dynamics(init_samples, score, sigmas,
                                                        self.config.sampling.n_steps_each,
                                                        self.config.sampling.step_lr, verbose=True,
-                                                       final_only=self.config.sampling.final_only)
+                                                       final_only=self.config.sampling.final_only,
+                                                       denoise=self.config.sampling.denoise)
 
                 if not self.config.sampling.final_only:
                     for i, sample in tqdm.tqdm(enumerate(all_samples), total=len(all_samples),
@@ -399,7 +401,8 @@ class NCSNRunner():
 
                 all_samples = anneal_Langevin_dynamics(samples, score, sigmas,
                                                        self.config.sampling.n_steps_each,
-                                                       self.config.sampling.step_lr, verbose=False)
+                                                       self.config.sampling.step_lr, verbose=False,
+                                                       denoise=self.config.sampling.denoise)
 
                 samples = all_samples[-1]
                 for img in samples:
@@ -505,7 +508,8 @@ class NCSNRunner():
                 all_samples = anneal_Langevin_dynamics(init_samples, score, sigmas,
                                                        self.config.fast_fid.n_steps_each,
                                                        self.config.fast_fid.step_lr,
-                                                       verbose=self.config.fast_fid.verbose)
+                                                       verbose=self.config.fast_fid.verbose,
+                                                       denoise=self.config.sampling.denoise)
 
                 final_samples = all_samples[-1]
                 for id, sample in enumerate(final_samples):
@@ -564,7 +568,8 @@ class NCSNRunner():
                 all_samples = anneal_Langevin_dynamics(init_samples, scorenet, sigmas,
                                                        self.config.fast_fid.n_steps_each,
                                                        self.config.fast_fid.step_lr,
-                                                       verbose=self.config.fast_fid.verbose)
+                                                       verbose=self.config.fast_fid.verbose,
+                                                       denoise=self.config.sampling.denoise)
 
                 final_samples = all_samples[-1]
                 for id, sample in enumerate(final_samples):

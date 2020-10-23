@@ -15,6 +15,7 @@ sampling:
   ckpt_id: 200000
   final_only: true
   fid: false
+  denoise: true
   num_samples4fid: 10000
   inpainting: false
   interpolation: false

@@ -18,7 +18,7 @@ def get_sigmas(config):
 
 @torch.no_grad()
 def anneal_Langevin_dynamics(x_mod, scorenet, sigmas, n_steps_each=200, step_lr=0.000008,
-                             final_only=False, verbose=False):
+                             final_only=False, verbose=False, denoise=True):
     images = []
 
     with torch.no_grad():
@@ -28,10 +28,6 @@ def anneal_Langevin_dynamics(x_mod, scorenet, sigmas, n_steps_each=200, step_lr=
             step_size = step_lr * (sigma / sigmas[-1]) ** 2
             for s in range(n_steps_each):
                 grad = scorenet(x_mod, labels)
-
-                # denoise_x = x_mod + sigma ** 2 * grad
-                # concat_x = torch.cat([x_mod, denoise_x], dim=0)
-                # images.append(concat_x.to('cpu'))
 
                 noise = torch.randn_like(x_mod)
                 grad_norm = torch.norm(grad.view(grad.shape[0], -1), dim=-1).mean()
@@ -48,12 +44,17 @@ def anneal_Langevin_dynamics(x_mod, scorenet, sigmas, n_steps_each=200, step_lr=
                     print("level: {}, step_size: {}, grad_norm: {}, image_norm: {}, snr: {}, grad_mean_norm: {}".format(
                         c, step_size, grad_norm.item(), image_norm.item(), snr.item(), grad_mean_norm.item()))
 
-            # if c >= 0:
-            #     return images
+        if denoise:
+            last_noise = (len(sigmas) - 1) * torch.ones(x_mod.shape[0], device=x_mod.device)
+            last_noise = last_noise.long()
+            x_mod = x_mod + sigmas[-1] ** 2 * scorenet(x_mod, last_noise)
+            images.append(x_mod.to('cpu'))
+
         if final_only:
             return [x_mod.to('cpu')]
         else:
             return images
+
 
 @torch.no_grad()
 def anneal_Langevin_dynamics_inpainting(x_mod, refer_image, scorenet, sigmas, image_size,
