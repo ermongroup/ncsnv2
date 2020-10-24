@@ -104,9 +104,9 @@ You can find samples in `<exp>/fid_samples/bedroom`.
 
 ## Pretrained Checkpoints
 
-Link: https://drive.google.com/file/d/1Nh6QuHzA5EAWazvwm6musUmWPxjz2_Ui/view?usp=sharing
+Link: https://drive.google.com/drive/folders/1217uhIvLg9ZrYNKOR3XTRFSurt4miQrd?usp=sharing
 
-Download and unzip it to the root folder. You can produce samples using it on all datasets we tested in the paper. It assumes the `--exp` argument is set to `exp`.
+You can produce samples using it on all datasets we tested in the paper. It assumes the `--exp` argument is set to `exp`.
 
 ## References
 
