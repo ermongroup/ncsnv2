@@ -4,6 +4,8 @@ This repo contains the official implementation for the paper [Improved Technique
 
 by [Yang Song](http://yang-song.github.io/) and [Stefano Ermon](https://cs.stanford.edu/~ermon/), Stanford AI Lab.
 
+**Note**: The method has been improved by the subsequent work [Score-Based Generative Modeling through Stochastic Differential Equations](https://arxiv.org/abs/2011.13456) ([code](https://github.com/yang-song/score_sde))
+
 -----------------------------------------------------------------------------------------
 
 We significantly improve the method proposed in [Generative Modeling by Estimating Gradients of the Data Distribution](https://arxiv.org/abs/1907.05600). Score-based generative models are flexible neural networks trained to capture the score function of an underlying data distribution—a vector field pointing to directions where the data density increases most rapidly. We present new techniques to improve the performance of score-based generative models, scaling them to *high resolution images* that are previously impossible. *Without requiring adversarial training*, they can produce sharp and diverse image samples that rival GANs.
