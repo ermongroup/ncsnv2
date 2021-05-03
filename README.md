@@ -115,11 +115,18 @@ You can produce samples using it on all datasets we tested in the paper. It assu
 If you find the code/idea useful for your research, please consider citing
 
 ```bib
-@article{song2020improved,
-  title={Improved Techniques for Training Score-Based Generative Models},
-  author={Song, Yang and Ermon, Stefano},
-  journal={arXiv preprint arXiv:2006.09011},
-  year={2020}
+@inproceedings{song2020improved,
+  author    = {Yang Song and Stefano Ermon},
+  editor    = {Hugo Larochelle and
+               Marc'Aurelio Ranzato and
+               Raia Hadsell and
+               Maria{-}Florina Balcan and
+               Hsuan{-}Tien Lin},
+  title     = {Improved Techniques for Training Score-Based Generative Models},
+  booktitle = {Advances in Neural Information Processing Systems 33: Annual Conference
+               on Neural Information Processing Systems 2020, NeurIPS 2020, December
+               6-12, 2020, virtual},
+  year      = {2020}
 }
 ```
 
