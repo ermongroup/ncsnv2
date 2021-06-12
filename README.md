@@ -4,7 +4,7 @@ This repo contains the official implementation for the paper [Improved Technique
 
 by [Yang Song](http://yang-song.github.io/) and [Stefano Ermon](https://cs.stanford.edu/~ermon/), Stanford AI Lab.
 
-**Note**: The method has been improved by the subsequent work [Score-Based Generative Modeling through Stochastic Differential Equations](https://arxiv.org/abs/2011.13456) ([code](https://github.com/yang-song/score_sde))
+**Note**: The method has been extended by the subsequent work [Score-Based Generative Modeling through Stochastic Differential Equations](https://arxiv.org/abs/2011.13456) ([code](https://github.com/yang-song/score_sde)) that allows better sample quality and exact log-likelihood computation.
 
 -----------------------------------------------------------------------------------------
 
